@@ -3,9 +3,13 @@ package org.example;
 import java.awt.*;
 
 public class ChessPiece {
-    String color = new Color();
+    String color;
     String typeOfFigure;
     Boolean check = true;
+
+    public ChessPiece() {
+        color = new Color();
+    }
 
 
     public String getColor() {

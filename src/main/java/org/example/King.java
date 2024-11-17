@@ -33,4 +33,8 @@ public class King extends ChessPiece{
         // Проверка на невозможность хода в текущую позицию
         return line != toLine || column != toColumn;
     }
+
+    public boolean isUnderAttack(ChessBoard board, int line, int column) {
+        if (board[0][4] && board[0][3] &&)
+    }
 }

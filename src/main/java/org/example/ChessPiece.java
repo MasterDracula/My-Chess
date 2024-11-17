@@ -1,14 +1,11 @@
 package org.example;
 
-import java.awt.*;
-
-public class ChessPiece {
+public  abstract class ChessPiece {
     String color;
-    String typeOfFigure;
     Boolean check = true;
-
-    public ChessPiece() {
-        color = new Color();
+    public ChessPiece[][] board = new ChessPiece[8][8];
+    public ChessPiece(String color) {
+        this.color = color;
     }
 
 
@@ -20,9 +17,8 @@ public class ChessPiece {
         return true;
     }
 
-    public String getSymbol() {
-        return typeOfFigure;
-    }
+    public abstract String getSymbol();
 
+}
     
 

@@ -4,7 +4,7 @@ public class ChessBoard {
     public ChessPiece[][] board = new ChessPiece[8][8]; // creating a field for game
     String nowPlayer;
 
-    public ChessBoard(String nowPlayer) {
+    public ChessBoard() {
         this.nowPlayer = nowPlayer;
     }
 

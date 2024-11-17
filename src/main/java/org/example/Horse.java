@@ -7,26 +7,27 @@ public class Horse extends ChessPiece {
         super(color);
     }
 
-    // Реализуем метод, который возвращает символ фигур
+    // Метод возвращающий символ фигур
     @Override
     public String getSymbol() {
         return "H";
     }
 
-    // Реализуем метод, который возвращает цвет фигуры
+    // Метод, возвращающий цвет фигуры
     @Override
     public String getColor() {
         return color;
     }
 
+    // Метод, проверяющий возможность хода
     @Override
-    public boolean canMoveToPosition(ChessBoard chessBoard, int startLine, int startColumn, int endLine, int endColumn) {
-        if (!chessBoard.checkPos(startLine) || !chessBoard.checkPos(startColumn) || !chessBoard.checkPos(endLine) ||
-                !chessBoard.checkPos(endColumn)) {
+    public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+        if (!chessBoard.checkPos(line) || !chessBoard.checkPos(column) || !chessBoard.checkPos(toLine) ||
+                !chessBoard.checkPos(toColumn)) {
             return false;
         }
-        int x = Math.abs(startLine-endLine);
-        int y = Math.abs(startColumn-endColumn);
+        int x = Math.abs(line-toLine);
+        int y = Math.abs(column-toColumn);
         return  (x ==2 && y==1)||(x==1 && y==2);
     }
 }

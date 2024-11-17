@@ -7,13 +7,13 @@ public class Bishop extends ChessPiece {
         super(color);
     }
 
-    // Метод, который возвращает символ фигур
+    // Метод возвращающий символ фигур
     @Override
     public String getSymbol() {
         return "B";
     }
 
-    // Метод, который возвращает цвет фигуры
+    // Метод, возвращающий цвет фигуры
     @Override
     public String getColor() {
         return color;

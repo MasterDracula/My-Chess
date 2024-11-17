@@ -7,13 +7,13 @@ public class Pawn extends ChessPiece {
         super(color);
     }
 
-    // Метод, который возвращает символ фигур
+    // Метод возвращающий символ фигур
     @Override
     public String getSymbol() {
         return "P";
     }
 
-    // Метод, который возвращает цвет фигуры
+    // Метод, возвращающий цвет фигуры
     @Override
     public String getColor() {
         return color;
@@ -28,9 +28,6 @@ public class Pawn extends ChessPiece {
         int colorXY = color.equals("White")? 1:-1;
         if(Line +colorXY == toLine && Column==toColumn){
             return true;
-        }else if(Line ==(color.equals("White")?1:6)&& Line + 2*colorXY == toLine && Column == toColumn){
-            return  true;
-        }
-        return false;
+        }else return Line == (color.equals("White") ? 1 : 6) && Line + 2 * colorXY == toLine && Column == toColumn;
     }
 }

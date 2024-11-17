@@ -13,7 +13,7 @@ public  abstract class ChessPiece {
         return color;
     }
 
-    public boolean canMoveToPosition(ChessBoard chessBoard, int startLine, int startColumn, int endLine, int endColumn) {
+    public boolean canMoveToPosition(ChessBoard chessBoard, int Line, int Column, int toLine, int toColumn) {
         return true;
     }
 

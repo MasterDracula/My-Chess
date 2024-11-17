@@ -1,22 +1,21 @@
 package org.example;
 
-public class Queen extends ChessPiece {
+public class Rook extends ChessPiece{
 
-    // Конструктор принимающий цвет фигуры
-    public Queen(String color) {
+    public Rook(String color) {
         super(color);
     }
 
     // Метод возвращающий символ фигур
     @Override
     public String getSymbol() {
-        return "Q";
+        return "R";
     }
 
     // Метод, возвращающий цвет фигуры
     @Override
     public String getColor() {
-        return color;
+        return super.getColor();
     }
 
     @Override
@@ -26,9 +25,8 @@ public class Queen extends ChessPiece {
             return false;
         }
 
-        // Проверка на возможность хода королевы
-        if (Math.abs(line - toLine) == Math.abs(column - toColumn) || (line == toLine && Math.abs(column - toColumn) == 1)
-                || (column == toColumn && Math.abs(line - toLine) == 1)) {
+        // Проверка на возможность хода ладьи
+        if (Math.abs(line - toLine) == Math.abs(column - toColumn)) {
             return true;
         }
 

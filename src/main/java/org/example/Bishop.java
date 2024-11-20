@@ -26,8 +26,27 @@ public class Bishop extends ChessPiece {
                 !chessBoard.checkPos(endColumn)) {
             return false;
         }
-        int x = Math.abs(startLine - endLine);
-        int y = Math.abs(startColumn - endColumn);
-        return x == y;
+        int rowDiff = Math.abs(startLine - endLine);
+        int colDiff = Math.abs(startColumn - endColumn);
+
+        if (rowDiff != colDiff) {
+            return false;
+        }
+
+        int rowStep = (endLine > startLine) ? 1 : -1;
+        int colStep = (endColumn > startColumn) ? 1 : -1;
+        int steps = rowDiff - 1;
+        for (int i = 1; i <= steps; i++) {
+            if (chessBoard.board[startLine + i * rowStep][startColumn + i * colStep] != null) {
+                return false;
+            }
+        }
+        ChessPiece destinationPiece = chessBoard.board[endLine][endColumn];
+        if (destinationPiece == null) {
+            return true;
+        } else {
+            return !destinationPiece.getColor().equals(this.getColor());
+        }
     }
 }
+

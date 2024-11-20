@@ -26,8 +26,18 @@ public class Horse extends ChessPiece {
                 !chessBoard.checkPos(toColumn)) {
             return false;
         }
-        int x = Math.abs(line-toLine);
-        int y = Math.abs(column-toColumn);
-        return  (x ==2 && y==1)||(x==1 && y==2);
+        int rowDiff = Math.abs(line - toLine);
+        int colDiff = Math.abs(column - toColumn);
+        boolean isValidLMove = (rowDiff == 2 && colDiff == 1) || (rowDiff == 1 && colDiff == 2);
+        if (!isValidLMove) {
+            return false;
+        }
+        ChessPiece targetPiece = chessBoard.board[toLine][toColumn];
+        if (targetPiece == null) {
+            return true;
+        } else {
+            return !targetPiece.getColor().equals(this.getColor());
+        }
     }
 }
+

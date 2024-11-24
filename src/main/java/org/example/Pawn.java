@@ -20,14 +20,39 @@ public class Pawn extends ChessPiece {
     }
     // Метод проверяющий возможнсть хода
     @Override
-    public boolean canMoveToPosition(ChessBoard chessBoard, int Line, int Column, int toLine, int toColumn) {
-        if (!chessBoard.checkPos(Line) || !chessBoard.checkPos(Column) || !chessBoard.checkPos(toLine) ||
-                !chessBoard.checkPos(toColumn)) {
+    public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+        // Проверка на выход за доску
+        if (!chessBoard.checkPos(line) || !chessBoard.checkPos(column) || !chessBoard.checkPos(toLine) || !chessBoard.checkPos(toColumn)) {
             return false;
         }
-        int colorXY = color.equals("White")? 1:-1;
-        if(Line +colorXY == toLine && Column==toColumn){
+        if (line != toLine && column != toColumn) {
+            return false;
+        }
+
+        if (line == toLine && column == toColumn) {
+            return false;
+        }
+        int rowStep = (toLine > line) ? 1 : -1;
+        int colStep = (toColumn > column) ? 1 : -1;
+        if (line == toLine) {
+            for (int i = column + colStep; i != toColumn; i += colStep) {
+                if (chessBoard.board[line][i] != null) {
+                    return false;
+                }
+            }
+        } else {
+            for (int i = line + rowStep; i != toLine; i += rowStep) {
+                if (chessBoard.board[i][column] != null) {
+                    return false;
+                }
+            }
+        }
+        ChessPiece destinationPiece = chessBoard.board[toLine][toColumn];
+        if (destinationPiece == null) {
             return true;
-        }else return Line == (color.equals("White") ? 1 : 6) && Line + 2 * colorXY == toLine && Column == toColumn;
+        } else {
+            return !destinationPiece.getColor().equals(this.getColor());
+        }
     }
+
 }

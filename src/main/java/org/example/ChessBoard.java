@@ -5,7 +5,7 @@ public class ChessBoard {
     String nowPlayer;
 
     public ChessBoard(String white) {
-        this.nowPlayer = nowPlayer;
+        this.nowPlayer = white;
     }
 
     public String nowPlayerColor() {

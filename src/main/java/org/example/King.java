@@ -37,7 +37,6 @@ public class King extends ChessPiece{
         return false;
     }
 
-
     public boolean isUnderAttack(ChessBoard chessBoard, int line, int column) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {

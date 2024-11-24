@@ -34,7 +34,8 @@ public class King extends ChessPiece{
                 return !targetPiece.getColor().equals(this.getColor());
             }
         }
-        return false;
+        ChessPiece destinationPiece = chessBoard.board[toLine][toColumn];
+        return destinationPiece == null || !destinationPiece.getColor().equals(this.getColor());
     }
 
     public boolean isUnderAttack(ChessBoard chessBoard, int line, int column) {

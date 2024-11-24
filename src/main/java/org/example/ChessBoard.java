@@ -46,7 +46,7 @@ public class ChessBoard {
             }else{
                 if (board[7][0] == null || board[7][4] == null) return false;
                 if (board[7][0].getSymbol().equals("R") && board[7][4].getSymbol().equals("K") &&
-                        board[7][1] == null && board[0][2] == null && board[7][3] == null){
+                        board[7][1] == null && board[7][2] == null && board[7][3] == null){
                     if (board[7][0].getColor().equals("Black") && board[7][4].getColor().equals("Black") &&
                             board[7][0].check && board[7][4].check && new King("Balck").isUnderAttack(this, 7, 4)) {
                         board[7][4] = null;

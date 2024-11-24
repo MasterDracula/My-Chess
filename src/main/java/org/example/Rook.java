@@ -24,13 +24,33 @@ public class Rook extends ChessPiece{
         if (!chessBoard.checkPos(line) || !chessBoard.checkPos(column) || !chessBoard.checkPos(toLine) || !chessBoard.checkPos(toColumn)) {
             return false;
         }
-
-        // Проверка на возможность хода ладьи
-        if (Math.abs(line - toLine) == Math.abs(column - toColumn)) {
-            return true;
+        if (line != toLine && column != toColumn) {
+            return false;
         }
 
-        // Проверка на невозможность хода в текущую позицию
-        return line != toLine || column != toColumn;
+        if (line == toLine && column == toColumn) {
+            return false;
+        }
+        int rowStep = (toLine > line) ? 1 : -1;
+        int colStep = (toColumn > column) ? 1 : -1;
+        if (line == toLine) {
+            for (int i = column + colStep; i != toColumn; i += colStep) {
+                if (chessBoard.board[line][i] != null) {
+                    return false;
+                }
+            }
+        } else {
+            for (int i = line + rowStep; i != toLine; i += rowStep) {
+                if (chessBoard.board[i][column] != null) {
+                    return false;
+                }
+            }
+        }
+        ChessPiece destinationPiece = chessBoard.board[toLine][toColumn];
+        if (destinationPiece == null) {
+            return true;
+        } else {
+            return !destinationPiece.getColor().equals(this.getColor());
+        }
     }
 }

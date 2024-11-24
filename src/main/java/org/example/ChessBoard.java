@@ -3,7 +3,7 @@ package org.example;
 public class ChessBoard {
     public ChessPiece[][] board = new ChessPiece[8][8]; // creating a field for game
     String nowPlayer;
-
+    //
     public ChessBoard(String nowPlayer) {
         this.nowPlayer = nowPlayer;
     }
@@ -11,20 +11,21 @@ public class ChessBoard {
     public String nowPlayerColor() {
         return this.nowPlayer;
     }
-
+    // метод, котролирующий очередность хода
     public boolean moveToPosition(int startLine, int startColumn, int endLine, int endColumn) {
         if (checkPos(startLine) && checkPos(startColumn)) {
 
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
-                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
-                board[startLine][startColumn] = null; // set null to previous cell
+                board[endLine][endColumn] = board[startLine][startColumn];
+                board[startLine][startColumn] = null;
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
                 return true;
             } else return false;
         } else return false;
     }
+    // метод, проверяющий рокировку белых
         public boolean castling0() {
             if (nowPlayer.equals("White")){
                 if (board[0][0] == null || board[0][4] == null) return false;
@@ -60,7 +61,7 @@ public class ChessBoard {
                 }else return false;
             }
         }
-
+    // Метод, проверяющий возможность рокировки черных
     public boolean castling7() {
         if (nowPlayer.equals("White")){
             if (board[0][7] == null || board[0][4] == null) return false;
@@ -96,8 +97,8 @@ public class ChessBoard {
             }else return false;
         }
     }
-
-    public void printBoard() {  //print board in console
+    // Метод, показывающий доску
+    public void printBoard() {
         System.out.println("Turn " + nowPlayer);
         System.out.println();
         System.out.println("Player 2(Black)");

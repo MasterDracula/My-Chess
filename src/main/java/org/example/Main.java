@@ -53,7 +53,7 @@ public class Main {
                 'replay' - for restart game
                 'castling0' or 'castling7' - castling for any lines
                 'move 1 1 2 3' - for moving from 1 1 to 2 3(field is matrix from 0 to 7) 1st is row 2nd is colum
-                Check that figure can move throw allies, correct fighting, can take chek `n castling at this time ?""");
+                Check that figure can move throw allies, correct fighting, can take cheсk `n castling at this time ?""");
         System.out.println();
         board.printBoard();
         while (true) {
@@ -92,7 +92,6 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println("something goes wrong, try again");
                     }
-
                 }
             }
         }

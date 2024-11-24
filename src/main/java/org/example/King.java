@@ -24,6 +24,9 @@ public class King extends ChessPiece{
         if (!chessBoard.checkPos(line) || !chessBoard.checkPos(column) || !chessBoard.checkPos(toLine) || !chessBoard.checkPos(toColumn)) {
             return false;
         }
+        if (line == toLine && column == toColumn) {
+            return false;
+        }
         int rowDiff = Math.abs(line - toLine);
         int colDiff = Math.abs(column - toColumn);
         if (rowDiff <= 1 && colDiff <= 1) {

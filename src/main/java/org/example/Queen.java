@@ -21,20 +21,38 @@ public class Queen extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        // Проверка на выход за доску
+
         if (!chessBoard.checkPos(line) || !chessBoard.checkPos(column) || !chessBoard.checkPos(toLine) || !chessBoard.checkPos(toColumn)) {
             return false;
         }
+
         if (line == toLine && column == toColumn) {
             return false;
         }
 
-        if (Math.abs(line - toLine) == Math.abs(column - toColumn) || (line == toLine && Math.abs(column - toColumn) == 1)
-                || (column == toColumn && Math.abs(line - toLine) == 1)) {
-            return true;
+        int rowDiff = Math.abs(line - toLine);
+        int colDiff = Math.abs(column - toColumn);
+        boolean straightLine = line == toLine || column == toColumn;
+        boolean diagonal = rowDiff == colDiff;
+
+        if (!straightLine && !diagonal) {
+            return false;
         }
 
-        ChessPiece targetPiece = chessBoard.board[toLine][toColumn];
-        return targetPiece == null || !targetPiece.getColor().equals(this.getColor());
+        int rowDirection = Integer.compare(toLine, line);
+        int colDirection = Integer.compare(toColumn, column);
+        int currentRow = line + rowDirection;
+        int currentCol = column + colDirection;
+
+        while (currentRow != toLine || currentCol != toColumn) {
+            if (chessBoard.board[currentRow][currentCol] != null) {
+                return false;
+            }
+            currentRow += rowDirection;
+            currentCol += colDirection;
+        }
+
+        ChessPiece destinationPiece = chessBoard.board[toLine][toColumn];
+        return destinationPiece == null || !destinationPiece.getColor().equals(this.getColor());
     }
 }
